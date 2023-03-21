@@ -1,0 +1,27 @@
+{
+    "editor.fontFamily": "Cascadia Code",
+    "editor.fontSize": 16,
+    "editor.lineHeight": 1.7,
+    "editor.fontLigatures": true,
+    "editor.dragAndDrop": false,
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.smoothScrolling": true,
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true,
+    "editor.guides.bracketPairs": true,
+    "explorer.experimental.fileNesting.enabled": true,
+    "files.defaultLanguage": "markdown",
+    "files.associations": {
+        "*.mdx": "markdown"
+    },
+    "scm.defaultViewMode": "tree",
+    "security.workspace.trust.enabled": false,
+    "telemetry.telemetryLevel": "off",
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.fontFamily": "CaskaydiaCove NF",
+    "workbench.colorTheme": "SynthWave '84",
+    "workbench.iconTheme": "bearded-icons",
+    "workbench.editor.wrapTabs": true,
+    "workbench.list.smoothScrolling": true,
+    "update.mode": "none"
+}
