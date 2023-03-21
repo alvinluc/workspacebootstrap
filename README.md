@@ -1,4 +1,4 @@
-# Machine Customisation
+# Workspace Bootstrap
 
 Personal repo enabling a quick way to bootstrap commonly used packages and dev settings to be synced across Windows machines. 
 
@@ -9,7 +9,7 @@ Personal repo enabling a quick way to bootstrap commonly used packages and dev s
 As admin:
 
 ```powershell
-Invoke-Expression $(Invoke-WebRequest -UseBasicParsing https://raw.githubusercontent.com/alvinluc/customisation/master/InstallAsAdmin.ps1)
+Invoke-Expression $(Invoke-WebRequest -UseBasicParsing https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/InstallAsAdmin.ps1)
 ```
 
 (Advisable to reboot before this but not mandatory)
@@ -17,5 +17,5 @@ Invoke-Expression $(Invoke-WebRequest -UseBasicParsing https://raw.githubusercon
 As normal user in a Powershell Core window:
 
 ```powershell
-Invoke-Expression $(Invoke-WebRequest -UseBasicParsing  https://raw.githubusercontent.com/alvinluc/customisation/master/InstallAsUser.ps1)
+Invoke-Expression $(Invoke-WebRequest -UseBasicParsing  https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/InstallAsUser.ps1)
 ```
