@@ -36,7 +36,7 @@ function ConfigureWindowsTerminal {
         New-Item -ItemType "directory" -Path "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\" -Name "LocalState"
     }
 
-    Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/customisation/master/Resources/windows-terminal-settings.json -out $env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+    Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/windows-terminal-settings.json -out $env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 }
 
 function ConfigurePowershell {
@@ -56,19 +56,16 @@ function ConfigurePowershell {
         Install-Module $module -Scope CurrentUser -Confirm:$False -Force
     }
     
-    Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/customisation/master/Resources/Microsoft.PowerShell_profile.ps1 -out $env:USERPROFILE\Documents\Powershell\Microsoft.PowerShell_profile.ps1
+    Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/Microsoft.PowerShell_profile.ps1 -out $env:USERPROFILE\Documents\Powershell\Microsoft.PowerShell_profile.ps1
 }
 
 
 function ConfigureVsCode {
 
-    $extensions = Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/customisation/master/Resources/vscode_extensions.list
+    $extensions = Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/vscode_extensions.list
 
-    foreach ($extension in $extensions) {
-        if ($extension -eq "" -Or $extension.StartsWith("#")) { }
-        else {
-            code --install-extension $extension --force
-        }
+    foreach ($extension in $extensions.Content) {       
+        code --install-extension $extension --force        
     }
     
     if (Test-Path -Path "$env:APPDATA\Code\User") {  }
@@ -76,7 +73,7 @@ function ConfigureVsCode {
         New-Item -ItemType "directory" -Path "$env:APPDATA\Code\" -Name "User"
     }
 
-    Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/customisation/master/Resources/visual-studio-code-settings.json -out $env:APPDATA\Code\User\settings.json
+    Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/visual-studio-code-settings.json -out $env:APPDATA\Code\User\settings.json
     
 }
 
