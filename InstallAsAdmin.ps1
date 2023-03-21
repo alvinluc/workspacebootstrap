@@ -84,6 +84,7 @@ function InstallPackages {
 
     $chocolateyPackages = (       
         @{ Name = "directx"; Manager = [PackageManagers]::Chocolatey },
+        @{ Name = "firacode"; Manager = [PackageManagers]::Chocolatey },
         @{ Name = "filezilla"; Manager = [PackageManagers]::Chocolatey },
         @{ Name = "pyenv-win"; Manager = [PackageManagers]::Chocolatey },
         @{ Name = "servicebusexplorer"; Manager = [PackageManagers]::Chocolatey },
