@@ -12,8 +12,7 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 brew tap homebrew/cask-versions
  
-brew install jq xz make tree wget iterm2 httrack make
-brew install git git-flow zsh-completions
+brew install jq xz make tree wget iterm2 httrack make git git-flow zsh-completions
 
 git config --global user.name $NAME
 git config --global user.email $EMAIL
@@ -24,9 +23,9 @@ eval "$(ssh-agent -s)"
 ssh-add ${HOME}/.ssh/id_rsa 
 
 brew install --cask docker
+
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 source $HOME/.zshrc
-
 pnpm env use --global lts
  
 brew install dotnet-sdk
@@ -37,7 +36,7 @@ pyenv install $PYTHON
 pyenv global $PYTHON
 echo 'PATH=$(pyenv root)/shims:$PATH' >> ~/.zprofile
  
-brew install visual-studio-code visual-studio postman azure-data-studio
+brew install visual-studio-code
 brew install --cask firefox google-chrome cryptomator keepassxc onedrive the-unarchiver iina whatsapp
  
 
