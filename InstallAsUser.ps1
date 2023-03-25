@@ -90,16 +90,10 @@ function ConfigurePythonEnv($PYTHON_VER) {
     pyenv global $PYTHON_VER
 }
 
-function ConfigureNode {
-    volta install node
-}
-
-
 if (CheckAdminPrivileges -eq $true) {} else {    
     $NAME = Read-Host "Please enter Git Name"
     $EMAIL = Read-Host "Please enter Git Email"
     $PYTHON_VER = Read-Host "Enter Python version to install"
-
 
     ConfigureGit($NAME, $EMAIL)
     ConfigureSSH
@@ -109,5 +103,4 @@ if (CheckAdminPrivileges -eq $true) {} else {
     ConfigureVsCode
     ConfigureDotnetPackages
     ConfigurePythonEnv($PYTHON_VER)
-    ConfigureNode
 }

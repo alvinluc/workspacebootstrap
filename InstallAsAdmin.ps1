@@ -52,7 +52,7 @@ function InstallPackages {
         @{ Name = "JanDeDobbeleer.OhMyPosh"; Manager = [PackageManagers]::Winget },               
         @{ Name = "Insomnia.Insomnia"; Manager = [PackageManagers]::Winget },
         @{ Name = "Notepad++.Notepad++"; Manager = [PackageManagers]::Winget },
-        @{ Name = "Volta.Volta"; Manager = [PackageManagers]::Winget },
+        @{ Name = "PnPm"; Manager = [PackageManagers]::Winget },
         @{ Name = "WinMerge.WinMerge"; Manager = [PackageManagers]::Winget },
         @{ Name = "XavierRoche.HTTrack"; Manager = [PackageManagers]::Winget },
         
@@ -144,6 +144,12 @@ function InstallWSL {
     wsl --set-default-version 2
 }
 
+function InstallNode {    
+    Invoke-WebRequest https://get.pnpm.io/install.ps1 -useb | iex
+    pnpm env use --global lts
+}
+
+
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 
 if (CheckAdminPrivileges -eq $true) {    
@@ -151,5 +157,6 @@ if (CheckAdminPrivileges -eq $true) {
     InstallPackageManagers
     InstallWSL
     InstallFonts
-    InstallPackages        
+    InstallPackages
+    InstallNode     
 }

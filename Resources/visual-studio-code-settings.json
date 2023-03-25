@@ -3,8 +3,8 @@
     "editor.fontSize": 16,
     "editor.lineHeight": 1.7,
     "editor.fontLigatures": true,
-    "editor.dragAndDrop": false,
     "editor.cursorSmoothCaretAnimation": "on",
+    "editor.inlineSuggest.enabled": true,
     "editor.smoothScrolling": true,
     "editor.wordWrap": "on",
     "editor.formatOnSave": true,
@@ -19,9 +19,8 @@
     "terminal.integrated.fontSize": 16,
     "terminal.integrated.fontFamily": "Fira Code",
     "workbench.colorTheme": "SynthWave '84",
-    "workbench.iconTheme": "bearded-icons",
+    "workbench.iconTheme": "sweet-vscode-icons",
     "workbench.editor.wrapTabs": true,
     "workbench.list.smoothScrolling": true,
-    "update.mode": "none",
-    "editor.inlineSuggest.enabled": true
+    "update.mode": "none"
 }
