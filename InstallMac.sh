@@ -18,6 +18,7 @@ brew install jq xz make tree wget iterm2 httrack make git git-flow zsh-completio
 git config --global user.name $NAME
 git config --global user.email $EMAIL
 git config --global core.editor 'code --wait'
+git config --global core.autocrlf input
 
 ssh-keygen -b 4096 -t rsa -C $EMAIL -f ${HOME}/.ssh/id_rsa -q -N ""
 eval "$(ssh-agent -s)"

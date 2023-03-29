@@ -6,7 +6,7 @@ function CheckAdminPrivileges {
 function ConfigureGit ($name, $email) {    
     git config --global user.name "$name"
     git config --global user.email "$email"
-    git config --global core.autocrlf false
+    git config --global core.autocrlf true
     git config --global init.defaultBranch main
     git config --global push.default current
     git config --global pull.rebase true
