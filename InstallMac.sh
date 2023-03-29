@@ -49,3 +49,13 @@ sed -i '' "s/plugins=(git)/plugins=(git-prompt zsh-syntax-highlighting zsh-autos
 mkdir -p ~/Workspace/templates/temp
 echo -e 'alias w="cd ~/Workspace"' >> ~/.zprofile
 echo -e 'scrape() { cd ~/Workspace/templates/temp && httrack --disable-security-limits --connection-per-second=50 --sockets=80 --keep-alive --verbose --advanced-progressinfo -F "Mozilla/5.0 (X11;U; Linux i686; en-GB; rv:1.9.1) Gecko/20090624 Ubuntu/9.04 (jaunty) Firefox/3.5" -i --footer " " -s0 -m -r5 -d "$@"; }' >> ~/.zprofile
+
+
+extensions = $(curl https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/vscode_extensions.list)
+
+for p in $extensions
+do
+    code --install-extension "${p}"
+done
+
+curl -o  $HOME/Library/Application\ Support/Code/User/settings.json https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/visual-studio-code-settings.json
