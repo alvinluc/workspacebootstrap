@@ -79,7 +79,11 @@ function InstallPackages {
         @{ Name = "Winamp.Winamp"; Manager = [PackageManagers]::Winget },
         @{ Name = "Windscribe.Windscribe"; Manager = [PackageManagers]::Winget },
         @{ Name = "WhatsApp.WhatsApp"; Manager = [PackageManagers]::Winget },
-        @{ Name = "yt-dlp.yt-dlp"; Manager = [PackageManagers]::Winget }
+        @{ Name = "yt-dlp.yt-dlp"; Manager = [PackageManagers]::Winget },
+
+        # Auto Dark Mode
+        @{ Name = "XP8JK4HZBVF435"; Manager = [PackageManagers]::Winget }
+        
     )
 
     $chocolateyPackages = (       
