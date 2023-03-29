@@ -50,7 +50,7 @@ function InstallPackages {
         @{ Name = "Microsoft.WindowsTerminal"; Manager = [PackageManagers]::Winget },        
         @{ Name = "PostgreSQL.pgadmin"; Manager = [PackageManagers]::Winget },
         @{ Name = "JanDeDobbeleer.OhMyPosh"; Manager = [PackageManagers]::Winget },               
-        @{ Name = "Insomnia.Insomnia"; Manager = [PackageManagers]::Winget },
+        @{ Name = "Postman.Postman"; Manager = [PackageManagers]::Winget },
         @{ Name = "Notepad++.Notepad++"; Manager = [PackageManagers]::Winget },
         @{ Name = "PnPm"; Manager = [PackageManagers]::Winget },
         @{ Name = "WinMerge.WinMerge"; Manager = [PackageManagers]::Winget },

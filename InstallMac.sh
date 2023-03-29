@@ -38,9 +38,8 @@ pyenv install $PYTHON
 pyenv global $PYTHON
 echo 'PATH=$(pyenv root)/shims:$PATH' >> ~/.zprofile
 
-brew install visual-studio-code
+brew install visual-studio-code postman pgadmin4
 brew install --cask firefox google-chrome cryptomator keepassxc onedrive the-unarchiver iina whatsapp
-
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
