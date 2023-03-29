@@ -53,9 +53,9 @@ echo -e 'scrape() { cd ~/Workspace/templates/temp && httrack --disable-security-
 
 extensions = $(curl https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/vscode_extensions.list)
 
-for p in $extensions
+for extension in $extensions
 do
-    code --install-extension "${p}"
+    code --install-extension "${extension}"
 done
 
 curl -o  $HOME/Library/Application\ Support/Code/User/settings.json https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/visual-studio-code-settings.json
