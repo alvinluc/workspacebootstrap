@@ -134,13 +134,21 @@ function UnzipFromWeb ($url) {
 
 function InstallFonts {
     $cascadiaCodeFolder = UnzipFromWeb 'https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaCode.zip'
+    $firaMonoCodeFolder = UnzipFromWeb 'https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraMono.zip'
     $destinationFolder = 'C:\Windows\Fonts'
     $windowsFontFolder = (new-object -com shell.application).NameSpace($destinationFolder)
 
     foreach ($file in "$cascadiaCodeFolder\*.otf") {     
         Get-ChildItem $file | ForEach-Object { $windowsFontFolder.CopyHere($_.fullname) }
     }
+      
+    foreach ($file in "$firaMonoCodeFolder\*.otf") {     
+        Get-ChildItem $file | ForEach-Object { $windowsFontFolder.CopyHere($_.fullname) }
+    }
+
     Remove-Item $cascadiaCodeFolder -Recurse -Force
+    Remove-Item $firaMonoCodeFolder -Recurse -Force
+
 }
 
 function InstallWSL {

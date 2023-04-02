@@ -17,7 +17,7 @@
     "security.workspace.trust.enabled": false,
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.fontSize": 16,
-    "terminal.integrated.fontFamily": "Fira Code",
+    "terminal.integrated.fontFamily": "FuraMono NFM",
     "nightlight.nightTheme": "SynthWave '84",
     "nightlight.dayTheme": "Default Light+ Experimental",
     "nightlight.dayIconTheme": "sweet-vscode-icons",
