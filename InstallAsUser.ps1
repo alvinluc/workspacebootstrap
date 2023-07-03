@@ -3,9 +3,15 @@ function CheckAdminPrivileges {
     return (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator) 
 }
 
-function ConfigureGit ($name, $email) {    
+function ConfigureGit {
+    $name = Read-Host "Please enter your full name for Git"
+    $name = $name.Trim()
     git config --global user.name "$name"
-    git config --global user.email "$email"
+
+    $email = Read-Host "Please enter the email to use for Git"   
+    $email = $email.Trim()   
+    git config --global user.email $email
+
     git config --global core.autocrlf true
     git config --global init.defaultBranch main
     git config --global push.default current
@@ -22,21 +28,24 @@ function ConfigureSSH {
     ssh-keygen -b 4096 -t rsa
 }
 
-function ConfigureWorkspace {
-    if (Test-Path -Path "$env:USERPROFILE\Workspace") {  }
-    else {
-        New-Item -ItemType "directory" -Path "$env:USERPROFILE" -Name "Workspace"
-        New-Item $env:USERPROFILE\Workspace\Themes\temp -ItemType Directory -ea 0
-    }
+function ConfigureDotnetPackages {
+    dotnet nuget add source https://api.nuget.org/v3/index.json 
+    dotnet dev-certs https --trust
+
+    dotnet tool install --global dotnet-ef --version 6.0.19 # match dotnet sdk
 }
 
-function ConfigureWindowsTerminal {
-    if (Test-Path -Path "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState") {  }
-    else {
-        New-Item -ItemType "directory" -Path "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\" -Name "LocalState"
-    }
 
-    Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/windows-terminal-settings.json -out $env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+function ConfigurePython {
+    $defaultPythonVersion = '3.10.5'
+    $prompt = Read-Host "Press enter to accept the Python version to install default: [$($defaultPythonVersion)]"
+    $python_version = ($defaultPythonVersion, $prompt)[[bool]$prompt]
+    pyenv install $python_version
+    pyenv global $python_version
+}
+
+function ConfigureNode {
+    pnpm env use --global lts
 }
 
 function ConfigurePowershell {
@@ -59,13 +68,23 @@ function ConfigurePowershell {
     Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/Microsoft.PowerShell_profile.ps1 -out $env:USERPROFILE\Documents\Powershell\Microsoft.PowerShell_profile.ps1
 }
 
+function ConfigureWindowsTerminal {
+    if (Test-Path -Path "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState") {  }
+    else {
+        New-Item -ItemType "directory" -Path "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\" -Name "LocalState"
+    }
 
-function ConfigureVsCode {
+    Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/windows-terminal-settings.json -out $env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+}
 
-    $extensions = Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/vscode_extensions.list
 
-    foreach ($extension in $extensions.Content) {       
-        code --install-extension $extension --force        
+function ConfigureVisualStudioCode {
+
+    $extensions = Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/vscode_extensions.list  -ContentType "text/plain"
+    $extensions = $extensions.tostring() -split "[`r`n]"
+    
+    foreach ($extension in $extensions) {
+        code --install-extension $extension --force
     }
     
     if (Test-Path -Path "$env:APPDATA\Code\User") {  }
@@ -77,30 +96,22 @@ function ConfigureVsCode {
     
 }
 
-function ConfigureDotnetPackages {
-    dotnet nuget add source https://api.nuget.org/v3/index.json 
-    dotnet dev-certs https --trust
-    dotnet tool install --global dotnet-ef
-    dotnet tool install --global csharprepl
+function ConfigureWorkspace {
+    if (Test-Path -Path "$env:USERPROFILE\Workspace") {  }
+    else {
+        New-Item -ItemType "directory" -Path "$env:USERPROFILE" -Name "Workspace"
+        New-Item $env:USERPROFILE\Workspace\Themes\temp -ItemType Directory -ea 0
+    }
 }
 
-
-function ConfigurePythonEnv($PYTHON_VER) {
-    pyenv install $PYTHON_VER
-    pyenv global $PYTHON_VER
-}
-
-if (CheckAdminPrivileges -eq $true) {} else {    
-    $NAME = Read-Host "Please enter Git Name"
-    $EMAIL = Read-Host "Please enter Git Email"
-    $PYTHON_VER = Read-Host "Enter Python version to install"
-
-    ConfigureGit($NAME, $EMAIL)
+if (CheckAdminPrivileges -eq $true) {} else {     
+    ConfigureGit
     ConfigureSSH
-    ConfigureWorkspace
-    ConfigureWindowsTerminal
-    ConfigurePowershell
-    ConfigureVsCode
     ConfigureDotnetPackages
-    ConfigurePythonEnv($PYTHON_VER)
+    ConfigurePython
+    ConfigureNode
+    ConfigurePowershell
+    ConfigureWindowsTerminal   
+    ConfigureVisualStudioCode
+    ConfigureWorkspace
 }

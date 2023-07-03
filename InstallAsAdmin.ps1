@@ -61,16 +61,14 @@ function InstallPackages {
         @{ Name = "CPUID.CPU-Z"; Manager = [PackageManagers]::Winget },
         @{ Name = "Cryptomator.Cryptomator"; Manager = [PackageManagers]::Winget },
         @{ Name = "CrystalDewWorld.CrystalDiskInfo"; Manager = [PackageManagers]::Winget },
-        @{ Name = "clsid2.mpc-hc"; Manager = [PackageManagers]::Winget },
+        @{ Name = "Daum.PotPlayer"; Manager = [PackageManagers]::Winget },
         @{ Name = "Flameshot.Flameshot"; Manager = [PackageManagers]::Winget },
         @{ Name = "Google.Chrome"; Manager = [PackageManagers]::Winget },
-        @{ Name = "Gyan.FFmpeg"; Manager = [PackageManagers]::Winget },        
         @{ Name = "IrfanSkilJan.IrfanView"; Manager = [PackageManagers]::Winget },
         @{ Name = "KeepassXCTeam.KeePassXC"; Manager = [PackageManagers]::Winget },
         @{ Name = "Microsoft.XboxApp"; Manager = [PackageManagers]::Winget },
         @{ Name = "Mozilla.Firefox"; Manager = [PackageManagers]::Winget },  
         @{ Name = "RARLab.WinRAR"; Manager = [PackageManagers]::Winget },
-        @{ Name = "Rufus.Rufus"; Manager = [PackageManagers]::Winget },
         @{ Name = "SumatraPDF.SumatraPDF"; Manager = [PackageManagers]::Winget },
         @{ Name = "TechPowerUp.GPU-Z"; Manager = [PackageManagers]::Winget },
         @{ Name = "Tonec.InternetDownloadManager"; Manager = [PackageManagers]::Winget },
@@ -79,7 +77,6 @@ function InstallPackages {
         @{ Name = "Winamp.Winamp"; Manager = [PackageManagers]::Winget },
         @{ Name = "Windscribe.Windscribe"; Manager = [PackageManagers]::Winget },
         @{ Name = "WhatsApp.WhatsApp"; Manager = [PackageManagers]::Winget },
-        @{ Name = "yt-dlp.yt-dlp"; Manager = [PackageManagers]::Winget },
 
         # Auto Dark Mode
         @{ Name = "XP8JK4HZBVF435"; Manager = [PackageManagers]::Winget }
@@ -88,12 +85,14 @@ function InstallPackages {
 
     $chocolateyPackages = (       
         @{ Name = "directx"; Manager = [PackageManagers]::Chocolatey },
-        @{ Name = "firacode"; Manager = [PackageManagers]::Chocolatey },
+        @{ Name = "ffmpeg"; Manager = [PackageManagers]::Chocolatey },
         @{ Name = "filezilla"; Manager = [PackageManagers]::Chocolatey },
         @{ Name = "pyenv-win"; Manager = [PackageManagers]::Chocolatey },
+        @{ Name = "rufus"; Manager = [PackageManagers]::Chocolatey },
         @{ Name = "servicebusexplorer"; Manager = [PackageManagers]::Chocolatey },
         @{ Name = "sysinternals"; Manager = [PackageManagers]::Chocolatey },
-        @{ Name = "winscreenfetch"; Manager = [PackageManagers]::Chocolatey }
+        @{ Name = "winscreenfetch"; Manager = [PackageManagers]::Chocolatey },
+        @{ Name = "yt-dlp"; Manager = [PackageManagers]::Chocolatey }
     )
 
     $packages = $wingetPackages + $chocolateyPackages
@@ -133,14 +132,21 @@ function UnzipFromWeb ($url) {
 }
 
 function InstallFonts {
-    $cascadiaCodeFolder = UnzipFromWeb 'https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaCode.zip'
-    $firaMonoCodeFolder = UnzipFromWeb 'https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraMono.zip'
     $destinationFolder = 'C:\Windows\Fonts'
     $windowsFontFolder = (new-object -com shell.application).NameSpace($destinationFolder)
+
+    $cascadiaCodeFolder = UnzipFromWeb 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/CascadiaCode.zip'
+    $firaCodeFolder = UnzipFromWeb 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FiraCode.zip'
+    $firaMonoCodeFolder = UnzipFromWeb 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FiraMono.zip'
 
     foreach ($file in "$cascadiaCodeFolder\*.otf") {     
         Get-ChildItem $file | ForEach-Object { $windowsFontFolder.CopyHere($_.fullname) }
     }
+
+    foreach ($file in "$firaCodeFolder\*.ttf") {     
+        Get-ChildItem $file | ForEach-Object { $windowsFontFolder.CopyHere($_.fullname) }
+    }
+
       
     foreach ($file in "$firaMonoCodeFolder\*.otf") {     
         Get-ChildItem $file | ForEach-Object { $windowsFontFolder.CopyHere($_.fullname) }
@@ -158,7 +164,6 @@ function InstallWSL {
 
 function InstallNode {    
     Invoke-WebRequest https://get.pnpm.io/install.ps1 -useb | iex
-    pnpm env use --global lts
 }
 
 
