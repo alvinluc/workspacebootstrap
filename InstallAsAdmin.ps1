@@ -66,6 +66,7 @@ function InstallPackages {
         @{ Name = "Google.Chrome"; Manager = [PackageManagers]::Winget },
         @{ Name = "IrfanSkilJan.IrfanView"; Manager = [PackageManagers]::Winget },
         @{ Name = "KeepassXCTeam.KeePassXC"; Manager = [PackageManagers]::Winget },
+        @{ Name = "LizardByte.Sunshine"; Manager = [PackageManagers]::Winget },
         @{ Name = "Microsoft.XboxApp"; Manager = [PackageManagers]::Winget },
         @{ Name = "Mozilla.Firefox"; Manager = [PackageManagers]::Winget },  
         @{ Name = "RARLab.WinRAR"; Manager = [PackageManagers]::Winget },
