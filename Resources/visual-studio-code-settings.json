@@ -18,8 +18,8 @@
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.fontSize": 16,
     "terminal.integrated.fontFamily": "FuraMono NFM",
-    "nightlight.nightTheme": "SynthWave '84",
-    "nightlight.dayTheme": "Default Light+",
+    "nightlight.nightTheme": "2077",
+    "nightlight.dayTheme": "SynthWave '84",
     "nightlight.gpsLat": 55.737499,
     "nightlight.gpsLong": -3.972380,
     "nightlight.dayIconTheme": "sweet-vscode-icons",
@@ -56,7 +56,5 @@
         "!Select sequence",
         "!Split",
         "!Split sequence"
-    ],
-    "aws.telemetry": false,
-    "workbench.colorTheme": "SynthWave '84"
+    ]
 }
