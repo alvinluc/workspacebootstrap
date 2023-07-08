@@ -19,7 +19,7 @@
     "terminal.integrated.fontSize": 16,
     "terminal.integrated.fontFamily": "FuraMono NFM",
     "nightlight.nightTheme": "SynthWave '84",
-    "nightlight.dayTheme": "Default Light+ Experimental",
+    "nightlight.dayTheme": "Default Light+",
     "nightlight.gpsLat": 55.737499,
     "nightlight.gpsLong": -3.972380,
     "nightlight.dayIconTheme": "sweet-vscode-icons",
