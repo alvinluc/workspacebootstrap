@@ -15,6 +15,7 @@ Set-PSReadLineOption -EditMode Windows
 
 
 Set-Alias -Name w -Value NavigateToWorkspace
+Set-Alias -Name cleansub -Value CleanSubTitles
 
 $WindowsAppsPath = "$env:USERPROFILE\AppData\Local\Microsoft\WindowsApps"
 $env:Path = ($env:Path.Split(';') | Where-Object -FilterScript { $_ -ne $WindowsAppsPath }) -join ';'
@@ -61,4 +62,9 @@ function ytv($url) {
 
 function httr($url) {    
     httrack --disable-security-limits --connection-per-second=50 --sockets=80 --keep-alive --verbose --advanced-progressinfo  -F 'Mozilla/5.0 (X11;U; Linux i686; en-GB; rv:1.9.1) Gecko/20090624 Ubuntu/9.04 (jaunty) Firefox/3.5' -i --footer " " -s0 -m -r5 -d $url -O $env:USERPROFILE\Workspace\Themes\temp
+}
+
+function CleanSubTitles {
+    Get-ChildItem *.srt -Recurse | foreach { Remove-Item -Path $_.FullName }
+    Get-ChildItem *.vtt -Recurse | foreach { Remove-Item -Path $_.FullName }
 }
