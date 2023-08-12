@@ -22,8 +22,6 @@ $env:Path = ($env:Path.Split(';') | Where-Object -FilterScript { $_ -ne $Windows
 $env:Path += ";C:\Program Files\WinHTTrack"
 $env:Path += ";$env:USERPROFILE\AppData\Local\Microsoft\WindowsApps"
 
-WinScreenfetch
-
 # PowerShell parameter completion shim for the git CLI
 Register-ArgumentCompleter -Native -CommandName git -ScriptBlock {
     param($commandName, $wordToComplete, $cursorPosition)

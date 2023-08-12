@@ -38,7 +38,7 @@ function InstallPackages {
         @{ Name = "Docker.DockerDesktop"; Manager = [PackageManagers]::Winget },
         @{ Name = "Microsoft.VC++2015-2022Redist-x86"; Manager = [PackageManagers]::Winget },
         @{ Name = "Microsoft.VC++2015-2022Redist-x64"; Manager = [PackageManagers]::Winget },
-        @{ Name = "Microsoft.DotNet.SDK.6"; Manager = [PackageManagers]::Winget },        
+        @{ Name = "Microsoft.DotNet.SDK.6"; Manager = [PackageManagers]::Winget },
         @{ Name = "Microsoft.AzureCosmosEmulator"; Manager = [PackageManagers]::Winget },
         @{ Name = "Microsoft.AzureDataStudio"; Manager = [PackageManagers]::Winget },
         @{ Name = "Microsoft.AzureFunctionsCoreTools"; Manager = [PackageManagers]::Winget },
@@ -48,52 +48,40 @@ function InstallPackages {
         @{ Name = "Microsoft.VisualStudioCode"; Manager = [PackageManagers]::Winget },
         @{ Name = "Microsoft.VisualStudio.2022.Enterprise"; Manager = [PackageManagers]::Winget },
         @{ Name = "Microsoft.WindowsTerminal"; Manager = [PackageManagers]::Winget },        
-        @{ Name = "PostgreSQL.pgadmin"; Manager = [PackageManagers]::Winget },
-        @{ Name = "JanDeDobbeleer.OhMyPosh"; Manager = [PackageManagers]::Winget },               
+        @{ Name = "JanDeDobbeleer.OhMyPosh"; Manager = [PackageManagers]::Winget },
+        @{ Name = "pnpm.pnpm"; Manager = [PackageManagers]::Winget },      
         @{ Name = "Postman.Postman"; Manager = [PackageManagers]::Winget },
-        @{ Name = "Notepad++.Notepad++"; Manager = [PackageManagers]::Winget },
-        @{ Name = "PnPm"; Manager = [PackageManagers]::Winget },
-        @{ Name = "WinMerge.WinMerge"; Manager = [PackageManagers]::Winget },
+        @{ Name = "paolosalvatori.ServiceBusExplorer"; Manager = [PackageManagers]::Winget },  
         @{ Name = "XavierRoche.HTTrack"; Manager = [PackageManagers]::Winget },
         
-        @{ Name = "ALCPU.CoreTemp"; Manager = [PackageManagers]::Winget },
-        @{ Name = "CLechasseur.PathCopyCopy"; Manager = [PackageManagers]::Winget },
-        @{ Name = "CPUID.CPU-Z"; Manager = [PackageManagers]::Winget },
         @{ Name = "Cryptomator.Cryptomator"; Manager = [PackageManagers]::Winget },
-        @{ Name = "CrystalDewWorld.CrystalDiskInfo"; Manager = [PackageManagers]::Winget },
         @{ Name = "Daum.PotPlayer"; Manager = [PackageManagers]::Winget },
-        @{ Name = "Flameshot.Flameshot"; Manager = [PackageManagers]::Winget },
         @{ Name = "Google.Chrome"; Manager = [PackageManagers]::Winget },
         @{ Name = "IrfanSkilJan.IrfanView"; Manager = [PackageManagers]::Winget },
-        @{ Name = "KeepassXCTeam.KeePassXC"; Manager = [PackageManagers]::Winget },
+        @{ Name = "KeepassXCTeam.KeePassXC"; Manager = [PackageManagers]::Winget },       
+        @{ Name = "Gyan.FFmpeg"; Manager = [PackageManagers]::Winget },
         @{ Name = "LizardByte.Sunshine"; Manager = [PackageManagers]::Winget },
+        @{ Name = "Microsoft.DirectX"; Manager = [PackageManagers]::Winget },
         @{ Name = "Microsoft.XboxApp"; Manager = [PackageManagers]::Winget },
         @{ Name = "Mozilla.Firefox"; Manager = [PackageManagers]::Winget },  
         @{ Name = "RARLab.WinRAR"; Manager = [PackageManagers]::Winget },
+        @{ Name = "Rufus.Rufus"; Manager = [PackageManagers]::Winget },
         @{ Name = "SumatraPDF.SumatraPDF"; Manager = [PackageManagers]::Winget },
-        @{ Name = "TechPowerUp.GPU-Z"; Manager = [PackageManagers]::Winget },
         @{ Name = "Tonec.InternetDownloadManager"; Manager = [PackageManagers]::Winget },
         @{ Name = "qBittorrent.qBittorrent"; Manager = [PackageManagers]::Winget },       
-        @{ Name = "WeMod.WeMod"; Manager = [PackageManagers]::Winget },
         @{ Name = "Winamp.Winamp"; Manager = [PackageManagers]::Winget },
         @{ Name = "Windscribe.Windscribe"; Manager = [PackageManagers]::Winget },
         @{ Name = "WhatsApp.WhatsApp"; Manager = [PackageManagers]::Winget },
-
+        @{ Name = "yt-dlp.yt-dlp"; Manager = [PackageManagers]::Winget },
+        
         # Auto Dark Mode
         @{ Name = "XP8JK4HZBVF435"; Manager = [PackageManagers]::Winget }
         
     )
 
     $chocolateyPackages = (       
-        @{ Name = "directx"; Manager = [PackageManagers]::Chocolatey },
-        @{ Name = "ffmpeg"; Manager = [PackageManagers]::Chocolatey },
         @{ Name = "filezilla"; Manager = [PackageManagers]::Chocolatey },
-        @{ Name = "pyenv-win"; Manager = [PackageManagers]::Chocolatey },
-        @{ Name = "rufus"; Manager = [PackageManagers]::Chocolatey },
-        @{ Name = "servicebusexplorer"; Manager = [PackageManagers]::Chocolatey },
-        @{ Name = "sysinternals"; Manager = [PackageManagers]::Chocolatey },
-        @{ Name = "winscreenfetch"; Manager = [PackageManagers]::Chocolatey },
-        @{ Name = "yt-dlp"; Manager = [PackageManagers]::Chocolatey }
+        @{ Name = "pyenv-win"; Manager = [PackageManagers]::Chocolatey }
     )
 
     $packages = $wingetPackages + $chocolateyPackages
