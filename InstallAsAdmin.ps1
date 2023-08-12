@@ -51,7 +51,6 @@ function InstallPackages {
         @{ Name = "JanDeDobbeleer.OhMyPosh"; Manager = [PackageManagers]::Winget },
         @{ Name = "pnpm.pnpm"; Manager = [PackageManagers]::Winget },      
         @{ Name = "Postman.Postman"; Manager = [PackageManagers]::Winget },
-        @{ Name = "paolosalvatori.ServiceBusExplorer"; Manager = [PackageManagers]::Winget },  
         @{ Name = "XavierRoche.HTTrack"; Manager = [PackageManagers]::Winget },
         
         @{ Name = "Cryptomator.Cryptomator"; Manager = [PackageManagers]::Winget },
@@ -59,29 +58,29 @@ function InstallPackages {
         @{ Name = "Google.Chrome"; Manager = [PackageManagers]::Winget },
         @{ Name = "IrfanSkilJan.IrfanView"; Manager = [PackageManagers]::Winget },
         @{ Name = "KeepassXCTeam.KeePassXC"; Manager = [PackageManagers]::Winget },       
-        @{ Name = "Gyan.FFmpeg"; Manager = [PackageManagers]::Winget },
         @{ Name = "LizardByte.Sunshine"; Manager = [PackageManagers]::Winget },
         @{ Name = "Microsoft.DirectX"; Manager = [PackageManagers]::Winget },
         @{ Name = "Microsoft.XboxApp"; Manager = [PackageManagers]::Winget },
         @{ Name = "Mozilla.Firefox"; Manager = [PackageManagers]::Winget },  
         @{ Name = "RARLab.WinRAR"; Manager = [PackageManagers]::Winget },
-        @{ Name = "Rufus.Rufus"; Manager = [PackageManagers]::Winget },
         @{ Name = "SumatraPDF.SumatraPDF"; Manager = [PackageManagers]::Winget },
         @{ Name = "Tonec.InternetDownloadManager"; Manager = [PackageManagers]::Winget },
         @{ Name = "qBittorrent.qBittorrent"; Manager = [PackageManagers]::Winget },       
         @{ Name = "Winamp.Winamp"; Manager = [PackageManagers]::Winget },
         @{ Name = "Windscribe.Windscribe"; Manager = [PackageManagers]::Winget },
-        @{ Name = "WhatsApp.WhatsApp"; Manager = [PackageManagers]::Winget },
-        @{ Name = "yt-dlp.yt-dlp"; Manager = [PackageManagers]::Winget },
-        
+
         # Auto Dark Mode
         @{ Name = "XP8JK4HZBVF435"; Manager = [PackageManagers]::Winget }
         
     )
 
-    $chocolateyPackages = (       
+    $chocolateyPackages = (
+        @{ Name = "ffmpeg"; Manager = [PackageManagers]::Chocolatey },    
         @{ Name = "filezilla"; Manager = [PackageManagers]::Chocolatey },
-        @{ Name = "pyenv-win"; Manager = [PackageManagers]::Chocolatey }
+        @{ Name = "rufus"; Manager = [PackageManagers]::Chocolatey },
+        @{ Name = "servicebusexplorer"; Manager = [PackageManagers]::Chocolatey },
+        @{ Name = "pyenv-win"; Manager = [PackageManagers]::Chocolatey },
+        @{ Name = "yt-dlp"; Manager = [PackageManagers]::Chocolatey }
     )
 
     $packages = $wingetPackages + $chocolateyPackages
@@ -142,6 +141,7 @@ function InstallFonts {
     }
 
     Remove-Item $cascadiaCodeFolder -Recurse -Force
+    Remove-Item $firaCodeFolder -Recurse -Force
     Remove-Item $firaMonoCodeFolder -Recurse -Force
 
 }
