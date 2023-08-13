@@ -19,8 +19,10 @@ Set-Alias -Name cleansub -Value CleanSubTitles
 
 $WindowsAppsPath = "$env:USERPROFILE\AppData\Local\Microsoft\WindowsApps"
 $env:Path = ($env:Path.Split(';') | Where-Object -FilterScript { $_ -ne $WindowsAppsPath }) -join ';'
+$env:Path += ";C:\Program Files (x86)\GnuWin32\bin"
 $env:Path += ";C:\Program Files\WinHTTrack"
 $env:Path += ";$env:USERPROFILE\AppData\Local\Microsoft\WindowsApps"
+
 
 # PowerShell parameter completion shim for the git CLI
 Register-ArgumentCompleter -Native -CommandName git -ScriptBlock {
