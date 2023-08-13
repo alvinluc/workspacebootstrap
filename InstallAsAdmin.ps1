@@ -61,11 +61,11 @@ function InstallPackages {
         @{ Name = "LizardByte.Sunshine"; Manager = [PackageManagers]::Winget },
         @{ Name = "Microsoft.DirectX"; Manager = [PackageManagers]::Winget },
         @{ Name = "Microsoft.XboxApp"; Manager = [PackageManagers]::Winget },
-        @{ Name = "Mozilla.Firefox"; Manager = [PackageManagers]::Winget },  
         @{ Name = "RARLab.WinRAR"; Manager = [PackageManagers]::Winget },
         @{ Name = "SumatraPDF.SumatraPDF"; Manager = [PackageManagers]::Winget },
         @{ Name = "Tonec.InternetDownloadManager"; Manager = [PackageManagers]::Winget },
-        @{ Name = "qBittorrent.qBittorrent"; Manager = [PackageManagers]::Winget },       
+        @{ Name = "qBittorrent.qBittorrent"; Manager = [PackageManagers]::Winget },  
+        @{ Name = "VivaldiTechnologies.Vivaldi"; Manager = [PackageManagers]::Winget }, 
         @{ Name = "Winamp.Winamp"; Manager = [PackageManagers]::Winget },
         @{ Name = "Windscribe.Windscribe"; Manager = [PackageManagers]::Winget },
 
