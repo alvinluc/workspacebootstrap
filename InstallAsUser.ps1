@@ -46,6 +46,7 @@ function ConfigurePython {
 
 function ConfigureNode {
     pnpm env use --global lts
+    npx next telemetry disable
 }
 
 function ConfigurePowershell {
