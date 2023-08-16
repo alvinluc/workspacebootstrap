@@ -53,6 +53,7 @@ function InstallPackages {
         @{ Name = "Postman.Postman"; Manager = [PackageManagers]::Winget },
         @{ Name = "XavierRoche.HTTrack"; Manager = [PackageManagers]::Winget },
         
+        @{ Name = "Armin2208.WindowsAutoNightMode"; Manager = [PackageManagers]::Winget },
         @{ Name = "Cryptomator.Cryptomator"; Manager = [PackageManagers]::Winget },
         @{ Name = "Daum.PotPlayer"; Manager = [PackageManagers]::Winget },
         @{ Name = "Google.Chrome"; Manager = [PackageManagers]::Winget },
@@ -67,11 +68,7 @@ function InstallPackages {
         @{ Name = "qBittorrent.qBittorrent"; Manager = [PackageManagers]::Winget },  
         @{ Name = "VivaldiTechnologies.Vivaldi"; Manager = [PackageManagers]::Winget }, 
         @{ Name = "Winamp.Winamp"; Manager = [PackageManagers]::Winget },
-        @{ Name = "Windscribe.Windscribe"; Manager = [PackageManagers]::Winget },
-
-        # Auto Dark Mode
-        @{ Name = "XP8JK4HZBVF435"; Manager = [PackageManagers]::Winget }
-        
+        @{ Name = "Windscribe.Windscribe"; Manager = [PackageManagers]::Winget }        
     )
 
     $chocolateyPackages = (
