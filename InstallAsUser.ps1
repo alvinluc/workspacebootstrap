@@ -3,6 +3,22 @@ function CheckAdminPrivileges {
     return (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator) 
 }
 
+function Download ($url) {
+    $fileName = Split-Path $url -leaf
+    $downloadPath = "$env:USERPROFILE\Downloads\$fileName"
+    Invoke-WebRequest $url -out $downloadPath
+    return $downloadPath
+}
+
+
+function UnzipFromWeb ($url) {
+    $downloadPath = Download $url
+    $targetDir = "$env:USERPROFILE\Downloads\$((Get-ChildItem $downloadPath).BaseName)"
+    Expand-Archive $downloadPath -DestinationPath $targetDir -Force
+    Remove-Item $downloadPath
+    return $targetDir
+}
+
 function ConfigureGit {
     $name = Read-Host "Please enter your full name for Git"
     $name = $name.Trim()
@@ -25,14 +41,13 @@ function ConfigureSSH {
         New-Item -ItemType "directory" -Path "$env:USERPROFILE" -Name ".ssh"
     }
     
-    ssh-keygen -b 4096 -t rsa
+    $email = git config --global user.email
+    ssh-keygen -b 4096 -t rsa -C "$email"
 }
 
 function ConfigureDotnetPackages {
-    dotnet nuget add source https://api.nuget.org/v3/index.json 
     dotnet dev-certs https --trust
-
-    dotnet tool install --global dotnet-ef --version 6.0.19 # match dotnet sdk
+    dotnet tool install --global dotnet-ef --version 6.0.22 # match dotnet sdk
 }
 
 
@@ -45,7 +60,8 @@ function ConfigurePython {
 }
 
 function ConfigureNode {
-    pnpm env use --global lts
+    nvm install lts
+    nvm use lts
     npx next telemetry disable
 }
 
