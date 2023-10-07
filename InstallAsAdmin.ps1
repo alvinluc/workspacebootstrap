@@ -29,7 +29,7 @@ function InstallPackages {
     choco install -y nerd-fonts-firacode --version=2.3.3
     choco install -y nerd-fonts-firamono --version=2.3.3
     choco install -y nerd-fonts-cascadiacode --version=2.3.3
-    choco install -y 7zip cryptomator directx ffmpeg filezilla firefox httrack keepassxc irfanview internet-download-manager potplayer sumatrapdf windscribe qbittorrent yt-dlp --ignore-checksums
+    choco install -y 7zip cryptomator directx ffmpeg filezilla file-converter firefox httrack keepassxc irfanview internet-download-manager potplayer sumatrapdf windscribe qbittorrent yt-dlp --ignore-checksums
     choco install -y epicgameslauncher steam --ignore-checksums
     choco install -y git make docker-desktop dotnet-6.0-sdk pyenv-win nvm pwsh oh-my-posh vscode --ignore-checksums
     choco install -y visualstudio2022enterprise --ignore-checksums
