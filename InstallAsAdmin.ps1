@@ -34,6 +34,7 @@ function InstallPackages {
     choco install -y epicgameslauncher steam --ignore-checksums
     choco install -y git make docker-desktop dotnet-6.0-sdk pyenv-win nvm pwsh oh-my-posh --ignore-checksums
     choco install -y visualstudio2022enterprise sql-server-management-studio vscode --ignore-checksums
+    winget install wemod.wemod
 }
 
 
