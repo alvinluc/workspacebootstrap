@@ -62,7 +62,6 @@ function ConfigurePython {
 function ConfigureNode {
     nvm install lts
     nvm use lts
-    npx next telemetry disable
 }
 
 function ConfigurePowershell {
