@@ -19,3 +19,9 @@ As normal user in a Powershell Core window:
 ```powershell
 Invoke-Expression $(Invoke-WebRequest -UseBasicParsing  https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/InstallAsUser.ps1)
 ```
+
+For Mac OS: 
+
+```sh 
+curl –sL https://raw.githubusercontent.com/alvinluc/customisation/master/InstallAsMac.sh | bash 
+``` 

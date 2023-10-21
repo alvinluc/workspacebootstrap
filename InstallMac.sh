@@ -1,6 +1,8 @@
-export NAME="YOUR NAME"
-export EMAIL="your@email.com"
-export PYTHON=3.10.10
+#!/bin/bash
+
+read -p 'Please enter your name: ' NAME
+read -p 'Please enter your email: ' EMAIL
+
 
 defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 defaults write com.apple.finder ShowPathBar -bool true
@@ -26,20 +28,20 @@ ssh-add ${HOME}/.ssh/id_rsa
 
 brew install --cask docker
 
-curl -fsSL https://get.pnpm.io/install.sh | sh -
-source $HOME/.zshrc
-pnpm env use --global lts
+brew install nvm
+nvm install --lts
 
 brew install dotnet-sdk
-dotnet tool install --global dotnet-ef
 
+read -p 'Please enter Python Version to Install: (default 3.10.5) ' PYTHON
+PYTHON=${PYTHON:-3.10.5}
 brew install pyenv
 pyenv install $PYTHON
 pyenv global $PYTHON
 echo 'PATH=$(pyenv root)/shims:$PATH' >> ~/.zprofile
 
-brew install visual-studio-code postman pgadmin4
-brew install --cask firefox google-chrome cryptomator keepassxc onedrive the-unarchiver iina whatsapp
+brew install visual-studio-code postman
+brew install --cask google-chrome keka cryptomator macpass onedrive iina whatsapp
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
