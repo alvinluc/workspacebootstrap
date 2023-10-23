@@ -31,14 +31,55 @@ function InstallPackages {
     choco install -y nerd-fonts-firacode --version=2.3.3
     choco install -y nerd-fonts-firamono --version=2.3.3
     choco install -y nerd-fonts-cascadiacode --version=2.3.3
-    choco install -y cryptomator directx ffmpeg filezilla file-converter firefox httrack keepassxc irfanview internet-download-manager mpc-hc-clsid2 renamer sumatrapdf windscribe winrar virtualbox qbittorrent yt-dlp --ignore-checksums
-    choco install -y epicgameslauncher steam goggalaxy --ignore-checksums
-    choco install -y git make docker-desktop dotnet-6.0-sdk pyenv-win nvm pwsh oh-my-posh azure-function-core-tools powershell-core --ignore-checksums
-    choco install -y visualstudio2022enterprise sql-server-management-studio vscode --ignore-checksums
+    
+    winget install Git.Git
+    winget install GnuWin32.Make
+    winget install Docker.DockerDesktop
+    winget install Oracle.VirtualBox
 
-    winget install microsoft.windowsterminal
-    winget install wemod.wemod
-    winget install malwarebytes.malwarebytes
+    winget install Microsoft.DirectX
+    winget install Microsoft.DotNet.SDK.6   
+    winget install Microsoft.PerfView
+    winget install Microsoft.PowerToys
+    winget install Microsoft.PowerShell
+    winget install Microsoft.AzureCLI
+    winget install Microsoft.Azure.FunctionsCoreTools
+    winget install Microsoft.Azure.CosmosEmulator
+    winget install Microsoft.Azure.StorageExplorer
+    winget install Microsoft.WindowsTerminal
+    winget install Microsoft.VisualStudioCode
+    winget install Microsoft.VisualStudio.2022.Enterprise
+    winget install Microsoft.VisualStudio.2022.BuildTools
+    winget install Microsoft.SQLServerManagementStudio
+    winget install JanDeDobbeleer.OhMyPosh
+
+    winget install Windscribe.Windscribe
+    winget install Mozilla.Firefox
+    winget install Google.Chrome
+    winget install Tonec.InternetDownloadManager
+    winget install qBittorrent.qBittorrent
+    winget install Malwarebytes.Malwarebytes
+    winget install Cryptomator.Cryptomator
+    winget install KeePassXCTeam.KeePassXC
+
+    winget install RARLab.WinRAR
+    winget install Gyan.FFmpeg
+    winget install yt-dlp.yt-dlp
+    winget install XavierRoche.HTTrack    
+    winget install IrfanSkiljan.IrfanView
+    winget install SumatraPDF.SumatraPDF    
+    winget install clsid2.mpc-hc   
+    winget install den4b.ReNamer
+    winget install AdrienAllard.FileConverter
+        
+    winget install Valve.Steam
+    winget install GOG.Galaxy
+    winget install EpicGames.EpicGamesLauncher
+    winget install WeMod.WeMod
+      
+
+    choco install -y filezilla pyenv-win nvm --ignore-checksums
+   
 }
 
 funciton UpdateWSL {
