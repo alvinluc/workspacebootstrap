@@ -4,38 +4,33 @@ function CheckAdminPrivileges {
 }
 
 function InitialiseEnvironment {
-    $COMPUTER_NAME = Read-Host "What is your workstation name?"
+    $COMPUTER_NAME = Read-Host "Create a new Workstation Name: "
     Rename-Computer -NewName $COMPUTER_NAME
 
-    powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
-    powercfg -SETACTIVE e9a42b02-d5df-448d-aa00-03f14749eb61
-    wsl --update
-}
+    wsl --install
 
-function InstallPackageManagers {
-    $hasPackageManager = Get-AppPackage -name 'Microsoft.DesktopAppInstaller'
-    if (!$hasPackageManager -or [version]$hasPackageManager.Version -lt [version]"1.10.0.0") {
-        Start-Process ms-appinstaller:?source=https://aka.ms/getwinget
-        Read-Host -Prompt "Press enter to continue..."
-    }
+    powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+    powercfg -SETACTIVE e9a42b02-d5df-448d-aa00-03f14749eb61    
+
+    Invoke-WebRequest https://github.com/microsoft/winget-cli/releases/download/v1.6.2771/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle -out $env:USERPROFILE\Documents\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+    Add-AppxPackage $env:USERPROFILE\Documents\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+    Remove-Item $env:USERPROFILE\Documents\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
 
     $chocolateyUrl = "https://chocolatey.org/install.ps1"
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString($chocolateyUrl))
-
-    choco feature enable -n=useRememberedArgumentsForUpgrades
 }
 
 
-function InstallPackages {
+function InstallApps {
     choco install -y nerd-fonts-firacode --version=2.3.3
     choco install -y nerd-fonts-firamono --version=2.3.3
     choco install -y nerd-fonts-cascadiacode --version=2.3.3
+    choco install -y googlechrome
     
     winget install Git.Git
     winget install GnuWin32.Make
     winget install Docker.DockerDesktop
-    winget install Oracle.VirtualBox
 
     winget install Microsoft.DirectX
     winget install Microsoft.DotNet.SDK.6   
@@ -55,7 +50,6 @@ function InstallPackages {
 
     winget install Windscribe.Windscribe
     winget install Mozilla.Firefox
-    winget install Google.Chrome
     winget install Tonec.InternetDownloadManager
     winget install qBittorrent.qBittorrent
     winget install Malwarebytes.Malwarebytes
@@ -79,19 +73,46 @@ function InstallPackages {
       
 
     choco install -y filezilla pyenv-win nvm --ignore-checksums
-   
-}
 
-funciton UpdateWSL {
-    wsl --update
+    Invoke-WebRequest https://github.com/LesFerch/WinSetView/archive/refs/tags/2.76.zip -out $env:USERPROFILE\Documents\WinSetView.zip
+    Expand-Archive $env:USERPROFILE\Documents\WinSetView.zip -DestinationPath $env:USERPROFILE\Documents\WinSetView -Force
+    Remove-Item $env:USERPROFILE\Documents\WinSetView.zip
+   
 }
 
 
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 
-if (CheckAdminPrivileges -eq $true) {    
-    InitialiseEnvironment
-    InstallPackageManagers
-    InstallPackages
-    UpdateWSL
+if (CheckAdminPrivileges -eq $true) {
+
+    $isSuccess = False
+    
+    try {
+        InitialiseEnvironment
+        $isSuccess = True
+    } 
+    catch {
+        Write-Host "An error occurred when initialising environment:"
+        Write-Host $_
+        $isSuccess = False
+    }
+
+
+
+    if ($isSuccess -eq $false) {
+        exit
+    }
+    else {
+        try {
+            InstallApps
+        }
+        catch {
+            Write-Host "An error occurred when installing apps:"
+            Write-Host $_
+        }    
+
+    }    
 }
+
+
+

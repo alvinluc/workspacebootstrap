@@ -3,22 +3,6 @@ function CheckAdminPrivileges {
     return (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator) 
 }
 
-function Download ($url) {
-    $fileName = Split-Path $url -leaf
-    $downloadPath = "$env:USERPROFILE\Downloads\$fileName"
-    Invoke-WebRequest $url -out $downloadPath
-    return $downloadPath
-}
-
-
-function UnzipFromWeb ($url) {
-    $downloadPath = Download $url
-    $targetDir = "$env:USERPROFILE\Downloads\$((Get-ChildItem $downloadPath).BaseName)"
-    Expand-Archive $downloadPath -DestinationPath $targetDir -Force
-    Remove-Item $downloadPath
-    return $targetDir
-}
-
 function ConfigureGit {
     $name = Read-Host "Please enter your full name for Git"
     $name = $name.Trim()
@@ -96,20 +80,19 @@ function ConfigureWindowsTerminal {
 
 function ConfigureVisualStudioCode {
 
-    $extensions = Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/vscode_extensions.list  -ContentType "text/plain"
-    $extensions = $extensions.tostring() -split "[`r`n]"
-    
-    foreach ($extension in $extensions) {
-        code --install-extension $extension --force
-    }
-    
     if (Test-Path -Path "$env:APPDATA\Code\User") {  }
     else {
         New-Item -ItemType "directory" -Path "$env:APPDATA\Code\" -Name "User"
     }
 
     Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/visual-studio-code-settings.json -out $env:APPDATA\Code\User\settings.json
+
+    $extensions = Invoke-WebRequest https://raw.githubusercontent.com/alvinluc/workspacebootstrap/master/Resources/vscode_extensions.list  -ContentType "text/plain"
+    $extensions = $extensions.tostring() -split "[`r`n]"
     
+    foreach ($extension in $extensions) {
+        code --install-extension $extension --force
+    }   
 }
 
 function ConfigureWorkspace {
