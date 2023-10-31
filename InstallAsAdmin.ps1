@@ -31,6 +31,7 @@ function InstallApps {
     winget install Git.Git
     winget install GnuWin32.Make
     winget install Docker.DockerDesktop
+    winget install VMware.WorkstationPro
 
     winget install Microsoft.DirectX
     winget install Microsoft.DotNet.SDK.6   
@@ -65,6 +66,7 @@ function InstallApps {
     winget install clsid2.mpc-hc   
     winget install den4b.ReNamer
     winget install AdrienAllard.FileConverter
+
         
     winget install Valve.Steam
     winget install GOG.Galaxy
