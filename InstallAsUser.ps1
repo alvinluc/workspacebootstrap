@@ -31,7 +31,7 @@ function ConfigureSSH {
 
 function ConfigureDotnetPackages {
     dotnet dev-certs https --trust
-    dotnet tool install --global dotnet-ef --version 6.0.22 # match dotnet sdk
+    dotnet tool install --global dotnet-ef --version 8.0.0 # match dotnet sdk
 }
 
 

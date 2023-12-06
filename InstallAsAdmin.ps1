@@ -12,7 +12,7 @@ function InitialiseEnvironment {
     powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
     powercfg -SETACTIVE e9a42b02-d5df-448d-aa00-03f14749eb61    
 
-    Invoke-WebRequest https://github.com/microsoft/winget-cli/releases/download/v1.6.2771/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle -out $env:USERPROFILE\Documents\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+    Invoke-WebRequest https://github.com/microsoft/winget-cli/releases/download/v1.6.3133/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle -out $env:USERPROFILE\Documents\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
     Add-AppxPackage $env:USERPROFILE\Documents\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
     Remove-Item $env:USERPROFILE\Documents\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
 
@@ -23,18 +23,14 @@ function InitialiseEnvironment {
 
 
 function InstallApps {
-    choco install -y nerd-fonts-firacode --version=2.3.3
-    choco install -y nerd-fonts-firamono --version=2.3.3
-    choco install -y nerd-fonts-cascadiacode --version=2.3.3
     choco install -y googlechrome
-    
     winget install Git.Git
     winget install GnuWin32.Make
     winget install Docker.DockerDesktop
     winget install VMware.WorkstationPro
 
     winget install Microsoft.DirectX
-    winget install Microsoft.DotNet.SDK.6   
+    winget install Microsoft.DotNet.SDK.8
     winget install Microsoft.PerfView
     winget install Microsoft.PowerToys
     winget install Microsoft.PowerShell
@@ -45,7 +41,6 @@ function InstallApps {
     winget install Microsoft.WindowsTerminal
     winget install Microsoft.VisualStudioCode
     winget install Microsoft.VisualStudio.2022.Enterprise
-    winget install Microsoft.VisualStudio.2022.BuildTools
     winget install Microsoft.SQLServerManagementStudio
     winget install JanDeDobbeleer.OhMyPosh
 
@@ -63,20 +58,26 @@ function InstallApps {
     winget install XavierRoche.HTTrack    
     winget install IrfanSkiljan.IrfanView
     winget install SumatraPDF.SumatraPDF    
-    winget install clsid2.mpc-hc   
+    winget install Daum.PotPlayer
     winget install den4b.ReNamer
     winget install AdrienAllard.FileConverter
 
-        
     winget install Valve.Steam
     winget install GOG.Galaxy
     winget install EpicGames.EpicGamesLauncher
     winget install WeMod.WeMod
+
+    choco install -y nerd-fonts-firacode --version=2.3.3
+    choco install -y nerd-fonts-firamono --version=2.3.3
+    choco install -y nerd-fonts-cascadiacode --version=2.3.3
+    
+    choco install -y sysinternals
+    choco install -y filezilla
+    choco install -y nvm
+    choco instlal -y pyenv-win
+    
       
-
-    choco install -y filezilla pyenv-win nvm --ignore-checksums
-
-    Invoke-WebRequest https://github.com/LesFerch/WinSetView/archive/refs/tags/2.76.zip -out $env:USERPROFILE\Documents\WinSetView.zip
+    Invoke-WebRequest https://github.com/LesFerch/WinSetView/archive/refs/tags/2.77.zip -out $env:USERPROFILE\Documents\WinSetView.zip
     Expand-Archive $env:USERPROFILE\Documents\WinSetView.zip -DestinationPath $env:USERPROFILE\Documents\WinSetView -Force
     Remove-Item $env:USERPROFILE\Documents\WinSetView.zip
    
