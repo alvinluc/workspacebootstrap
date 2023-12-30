@@ -25,6 +25,8 @@ function InitialiseEnvironment {
 function InstallApps {
     choco install -y googlechrome
     winget install Git.Git
+    winget install 7zip.7zip
+    winget install Notepad++.Notepad++
     winget install GnuWin32.Make
     winget install Docker.DockerDesktop
     winget install VMware.WorkstationPro
@@ -43,6 +45,10 @@ function InstallApps {
     winget install Microsoft.VisualStudio.2022.Enterprise
     winget install Microsoft.SQLServerManagementStudio
     winget install JanDeDobbeleer.OhMyPosh
+
+    winget install DevToys
+    winget install WinToys
+    winget install Flow-Launcher.Flow-Launcher
 
     winget install Windscribe.Windscribe
     winget install Mozilla.Firefox
