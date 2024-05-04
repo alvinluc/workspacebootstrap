@@ -16,6 +16,7 @@ Set-PSReadLineOption -EditMode Windows
 
 Set-Alias -Name w -Value NavigateToWorkspace
 Set-Alias -Name cleansub -Value CleanSubTitles
+Set-Alias -Name m3u -Value GenerateM3U
 
 $WindowsAppsPath = "$env:USERPROFILE\AppData\Local\Microsoft\WindowsApps"
 $env:Path = ($env:Path.Split(';') | Where-Object -FilterScript { $_ -ne $WindowsAppsPath }) -join ';'
@@ -74,4 +75,8 @@ function resetTCPPort($port) {
 function CleanSubTitles {
     Get-ChildItem *.srt -Recurse | foreach { Remove-Item -Path $_.FullName }
     Get-ChildItem *.vtt -Recurse | foreach { Remove-Item -Path $_.FullName }
+}
+
+function GenerateM3U($filename) {
+    Get-ChildItem *.* -include *.flac, *.ogg, *.mp3 -name | Out-File -Encoding UTF8 $filename.m3u 
 }
